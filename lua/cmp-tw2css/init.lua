@@ -25,14 +25,14 @@ end
 ---@param lang string
 ---@return boolean
 local function is_stylesheet(lang)
-  return lang == "css" or lang == "scss"
+  return lang == "css" or lang == "scss" or lang == "svelte"
 end
 
 --- Get the language set to the buffer
 ---@param bufnr number
 local function get_buf_lang(bufnr)
   bufnr = bufnr or vim.api.nvim_get_current_buf()
-  return vim.api.nvim_buf_get_option(bufnr, "ft")
+  return vim.bo[bufnr].filetype
 end
 
 ---@return boolean
